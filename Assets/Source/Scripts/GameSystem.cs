@@ -10,10 +10,12 @@ public class GameSystem : MonoBehaviour
     [SerializeField] private float switcherooChance = 20f;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private AudioSource soundsSource;
+    [SerializeField] private AudioSource musicSource;
 
     public static GameSystem gameSystem;
-    
+
     public Player player;
+    public Boss boss;
 
     private float timer;
 
@@ -21,6 +23,7 @@ public class GameSystem : MonoBehaviour
     public LayerMask GroundLayer => groundLayer;
     public bool Playing => player.Health.CurrentPoints > 0;
     private bool playing = true;
+    private bool bossAppeared = false;
 
     public event Action OnSwitch;
     public event Action OnSwitcheroo;
@@ -35,9 +38,15 @@ public class GameSystem : MonoBehaviour
         timer = Time.time + gameTimer;
 
         player.Health.Died += Lose;
-        //player.Health.Died += Win;
+        player.Health.Died += Win;
     }
 
+    private void StartGame()
+    {
+        OnWin?.Invoke();
+
+        playing = true;
+    }
     private void Win()
     {
         OnWin?.Invoke();
@@ -50,6 +59,12 @@ public class GameSystem : MonoBehaviour
 
         playing = false;
         player.gameObject.SetActive(false);
+    }
+    private void BossAppear()
+    {
+        boss.gameObject.SetActive(true);
+        boss.transform.SetParent(null);
+        bossAppeared = true;
     }
 
     void Update()

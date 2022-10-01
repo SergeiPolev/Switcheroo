@@ -11,6 +11,7 @@ public class Boss : MonoBehaviour, IHittable
     [SerializeField] private NavMeshAgent navMesh;
     [SerializeField] private GameObject shield;
     [SerializeField] private Transform bubblesRoot;
+    [SerializeField] private Transform bossModelRoot;
     [SerializeField] private Health bossHealth;
 
     private int refreshNavMeshFrames = 4;
@@ -23,6 +24,7 @@ public class Boss : MonoBehaviour, IHittable
         }
 
         bubblesRoot.DORotate(Vector3.up * 180, 3f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental);
+        bossModelRoot.DORotate(Vector3.up * -180, 3f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental);
     }
     public virtual void Update()
     {
