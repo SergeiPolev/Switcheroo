@@ -11,14 +11,13 @@ public class Health : MonoBehaviour
 
     [SerializeField] private GameObject _hitEffect;
     [SerializeField] private GameObject _deathEffect;
+    [SerializeField] private MeshRenderer _meshRenderer;
 
     public event Action Died;
     public event Action<float> Damaged;
     public event Action PointsChanged;
 
     private Tween flashTween;
-
-    public GameObject LastAttacker { get; private set; }
 
     public float CurrentPoints
     {
@@ -30,6 +29,7 @@ public class Health : MonoBehaviour
         }
     }
     private float _currentPoints;
+    private Color originalColor;
 
     public float MaxPoints
     {
@@ -49,6 +49,11 @@ public class Health : MonoBehaviour
     private void Awake()
     {
         CurrentPoints = MaxPoints;
+
+        if (_meshRenderer != null)
+        {
+            originalColor = _meshRenderer.material.color;
+        }
     }
 
     public void GetDamage(float damagePoints)
@@ -69,6 +74,13 @@ public class Health : MonoBehaviour
         if (CurrentPoints > 0)
         {
             Spawn(_hitEffect);
+
+            if (_meshRenderer != null)
+            {
+                flashTween = _meshRenderer.material.DOColor(gradient.Evaluate(_currentPoints / _maxPoints), .1f);
+
+                _meshRenderer.material.DOColor(originalColor, .05f).SetDelay(.1f);
+            }
 
             Damaged?.Invoke(damagePoints);
         }

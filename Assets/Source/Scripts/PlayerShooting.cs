@@ -21,7 +21,7 @@ public class PlayerShooting : MonoBehaviour
 
     private float timer;
 
-    private bool IsReverseAim = true;
+    private bool IsReverseAim = false;
 
     private void Awake()
     {
@@ -32,6 +32,7 @@ public class PlayerShooting : MonoBehaviour
         InitPoints();
 
         _gameSystem.OnSwitch += SwitchShootPoint;
+        _gameSystem.OnSwitcheroo += Switcheroo;
     }
     private void InitPoints()
     {
@@ -48,6 +49,7 @@ public class PlayerShooting : MonoBehaviour
         if (_gameSystem != null)
         {
             _gameSystem.OnSwitch -= SwitchShootPoint;
+            _gameSystem.OnSwitcheroo -= Switcheroo;
         }
     }
 
@@ -81,8 +83,15 @@ public class PlayerShooting : MonoBehaviour
 
         var newPoint = newPoints.Count > 0 ? newPoints[UnityEngine.Random.Range(0, newPoints.Count)] : firstShootPoint;
         currentShootPoint = newPoint;
-
+    }
+    private void Switcheroo()
+    {
         IsReverseAim = !IsReverseAim;
+
+        if (IsReverseAim)
+        {
+            currentShootPoint = firstShootPoint;
+        }
     }
     private void Shoot()
     {

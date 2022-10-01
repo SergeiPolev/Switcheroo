@@ -7,6 +7,7 @@ public class GameSystem : MonoBehaviour
 {
     [SerializeField] private float gameTimer = 10f;
     [SerializeField] private float despawnEnemy = 20f;
+    [SerializeField] private float switcherooChance = 20f;
     [SerializeField] private LayerMask groundLayer;
 
     public static GameSystem gameSystem;
@@ -19,6 +20,7 @@ public class GameSystem : MonoBehaviour
     public LayerMask GroundLayer => groundLayer;
 
     public event Action OnSwitch;
+    public event Action OnSwitcheroo;
 
     private void Awake()
     {
@@ -49,7 +51,14 @@ public class GameSystem : MonoBehaviour
 
         if (timer <= Time.time)
         {
-            OnSwitch?.Invoke();
+            if (UnityEngine.Random.Range(0, 100) < switcherooChance)
+            {
+                OnSwitcheroo?.Invoke();
+            }
+            else
+            {
+                OnSwitch?.Invoke();
+            }
 
             timer = Time.time + gameTimer;
         }

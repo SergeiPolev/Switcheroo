@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     private Health health;
     private NavMeshAgent navMesh;
     private Collider currentCollider;
+    private CharacterCanvas canvas;
     private int refreshNavMeshFrames = 3;
 
     private float attackTimer;
@@ -25,7 +26,7 @@ public class Enemy : MonoBehaviour
         health = GetComponent<Health>();
         navMesh = GetComponent<NavMeshAgent>();
         currentCollider = GetComponent<Collider>();
-        //canvas = GetComponentInChildren<CharacterCanvas>();
+        canvas = GetComponentInChildren<CharacterCanvas>();
 
         navMesh.speed = speed;
 
@@ -77,6 +78,7 @@ public class Enemy : MonoBehaviour
             return;
         }
 
+        canvas.UpdateFill(health.CurrentPoints / health.MaxPoints);
         health.GetDamage(damage);
     }
     internal virtual void Die()
@@ -90,7 +92,7 @@ public class Enemy : MonoBehaviour
         navMesh.velocity = Vector3.zero;
         navMesh.enabled = false;
 
-        //canvas.HealthBar.gameObject.SetActive(false);
+        canvas.HealthBar.gameObject.SetActive(false);
 
         currentCollider.enabled = false;
 
