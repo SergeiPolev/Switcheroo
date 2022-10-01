@@ -9,10 +9,13 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private float shootDelay = .5f;
     [SerializeField] private float shootForce = 30f;
     [SerializeField] private float shootDamage = 5f;
-    [SerializeField] private Transform[] shootPoints;
-    [SerializeField] private Transform firstShootPoint;
+    [SerializeField] private Transform[] shootSides;
+    [SerializeField] private Transform firstShootSide;
+    [SerializeField] private Transform shootPoint;
+    [SerializeField] private Transform gun;
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private AudioClip shotClip;
 
     private Camera currentCamera;
 
@@ -27,7 +30,7 @@ public class PlayerShooting : MonoBehaviour
     {
         currentCamera = Camera.main;
 
-        currentShootPoint = lastShootPoint = firstShootPoint;
+        currentShootPoint = lastShootPoint = firstShootSide;
 
         InitPoints();
 
@@ -36,7 +39,7 @@ public class PlayerShooting : MonoBehaviour
     }
     private void InitPoints()
     {
-        foreach (var point in shootPoints)
+        foreach (var point in shootSides)
         {
             var lookPoint = (point.position - transform.position) * 100f;
             lookPoint.y = point.position.y;
@@ -69,7 +72,7 @@ public class PlayerShooting : MonoBehaviour
     {
         List<Transform> newPoints = new List<Transform>();
 
-        foreach (var point in shootPoints)
+        foreach (var point in shootSides)
         {
             if (point == lastShootPoint)
             {
@@ -81,8 +84,9 @@ public class PlayerShooting : MonoBehaviour
 
         lastShootPoint = currentShootPoint;
 
-        var newPoint = newPoints.Count > 0 ? newPoints[UnityEngine.Random.Range(0, newPoints.Count)] : firstShootPoint;
+        var newPoint = newPoints.Count > 0 ? newPoints[UnityEngine.Random.Range(0, newPoints.Count)] : firstShootSide;
         currentShootPoint = newPoint;
+        gun.forward = newPoint.forward;
     }
     private void Switcheroo()
     {
@@ -90,12 +94,15 @@ public class PlayerShooting : MonoBehaviour
 
         if (IsReverseAim)
         {
-            currentShootPoint = firstShootPoint;
+            currentShootPoint = firstShootSide;
+            gun.forward = currentShootPoint.forward;
         }
     }
     private void Shoot()
     {
-        var bullet = Instantiate(bulletPrefab, currentShootPoint.position, Quaternion.identity);
+        var bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
+
+        _gameSystem.PlayShot(shotClip);
 
         bullet.OnTriggerEnterComponent.OnEnter += Hit;
 
@@ -137,9 +144,9 @@ public class PlayerShooting : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            var enemy = other.GetComponent<Enemy>();
+            var hittable = other.GetComponent<IHittable>();
 
-            enemy.GetHit(shootDamage);
+            hittable.GetHit(shootDamage);
         }
 
         @object.GetComponent<Bullet>().OnTriggerEnterComponent.OnEnter -= Hit;

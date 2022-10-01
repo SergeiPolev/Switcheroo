@@ -20,6 +20,11 @@ public class SurfaceGenerator : MonoBehaviour
     {
         if (Time.frameCount % checkFrames == 0)
         {
+            if (!_gameSystem.Playing)
+            {
+                return;
+            }
+
             CheckGround();
         }
     }

@@ -9,6 +9,7 @@ public class GameSystem : MonoBehaviour
     [SerializeField] private float despawnEnemy = 20f;
     [SerializeField] private float switcherooChance = 20f;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private AudioSource soundsSource;
 
     public static GameSystem gameSystem;
     
@@ -18,28 +19,37 @@ public class GameSystem : MonoBehaviour
 
     public float DespawnDistance => despawnEnemy;
     public LayerMask GroundLayer => groundLayer;
+    public bool Playing => player.Health.CurrentPoints > 0;
+    private bool playing = true;
 
     public event Action OnSwitch;
     public event Action OnSwitcheroo;
 
+    public event Action OnLose;
+    public event Action OnWin;
+
     private void Awake()
     {
-        if (gameSystem == null)
-        {
-            DontDestroyOnLoad(this);
-            gameSystem = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
+        _gameSystem = this;
 
         timer = Time.time + gameTimer;
+
+        player.Health.Died += Lose;
+        //player.Health.Died += Win;
     }
 
-    private void Start()
+    private void Win()
     {
-        _gameSystem = this;
+        OnWin?.Invoke();
+
+        playing = false;
+    }
+    private void Lose()
+    {
+        OnLose?.Invoke();
+
+        playing = false;
+        player.gameObject.SetActive(false);
     }
 
     void Update()
@@ -65,5 +75,10 @@ public class GameSystem : MonoBehaviour
 
         _canvasUI.UpdateHealthBar(player.GetHealth(), player.GetMaxHealth());
         _canvasUI.UpdateTimeBar(timer - Time.time, gameTimer);
+    }
+
+    public void PlayShot(AudioClip clip, float volume = 0.5f)
+    {
+        soundsSource.PlayOneShot(clip, volume);
     }
 }

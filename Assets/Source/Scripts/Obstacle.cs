@@ -9,6 +9,11 @@ public class Obstacle : MonoBehaviour
 
     private void Update()
     {
+        if (!_gameSystem.Playing)
+        {
+            return;
+        }
+
         if (Vector3.Distance(transform.position, _gameSystem.player.transform.position) > _gameSystem.DespawnDistance)
         {
             Despawn();

@@ -3,6 +3,9 @@
 public class Player : MonoBehaviour
 {
     [SerializeField] private Health health;
+
+    public Health Health => health;
+
     public float GetMaxHealth()
     {
         return health.MaxPoints;

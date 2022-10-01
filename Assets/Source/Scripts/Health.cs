@@ -2,6 +2,8 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 
+using static GameData;
+
 public class Health : MonoBehaviour
 {
     [Header("Hit Flash")]
@@ -10,6 +12,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float _maxPoints;
 
     [SerializeField] private GameObject _hitEffect;
+    [SerializeField] private AudioClip _hitSound;
     [SerializeField] private GameObject _deathEffect;
     [SerializeField] private MeshRenderer _meshRenderer;
 
@@ -83,6 +86,8 @@ public class Health : MonoBehaviour
             }
 
             Damaged?.Invoke(damagePoints);
+
+            _gameSystem.PlayShot(_hitSound);
         }
         else
         {

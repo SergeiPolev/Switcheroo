@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 using static GameData;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IHittable
 {
     [SerializeField] private float speed = 4f;
     [SerializeField] private float damage = 4f;
@@ -35,6 +35,11 @@ public class Enemy : MonoBehaviour
     public virtual void Update()
     {
         if (isDead)
+        {
+            return;
+        }
+
+        if (!_gameSystem.Playing)
         {
             return;
         }
