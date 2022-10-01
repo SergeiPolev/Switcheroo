@@ -24,6 +24,11 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Update()
     {
+        if (!_gameSystem.Playing)
+        {
+            return;
+        }
+
         if (maxObstacleOnScreen > currentAmount)
         {
             if (Time.time <= timer)

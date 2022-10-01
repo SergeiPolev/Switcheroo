@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IHittable
 {
     [SerializeField] private Health health;
 
@@ -15,6 +15,11 @@ public class Player : MonoBehaviour
         return health.CurrentPoints;
     }
     public void TakeDamage(float damage)
+    {
+        health.GetDamage(damage);
+    }
+
+    public void GetHit(float damage)
     {
         health.GetDamage(damage);
     }

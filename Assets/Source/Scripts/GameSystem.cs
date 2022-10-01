@@ -8,6 +8,7 @@ public class GameSystem : MonoBehaviour
     [SerializeField] private float gameTimer = 10f;
     [SerializeField] private float despawnEnemy = 20f;
     [SerializeField] private float switcherooChance = 20f;
+    [SerializeField] private float timeToBoss = 100f;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private AudioSource soundsSource;
     [SerializeField] private AudioSource musicSource;
@@ -18,11 +19,12 @@ public class GameSystem : MonoBehaviour
     public Boss boss;
 
     private float timer;
+    private float bossTimer;
 
     public float DespawnDistance => despawnEnemy;
     public LayerMask GroundLayer => groundLayer;
-    public bool Playing => player.Health.CurrentPoints > 0;
-    private bool playing = true;
+    public bool Playing => playing;
+    private bool playing = false;
     private bool bossAppeared = false;
 
     public event Action OnSwitch;
@@ -31,6 +33,8 @@ public class GameSystem : MonoBehaviour
     public event Action OnLose;
     public event Action OnWin;
 
+    public string GAME_WON_KEY = "GameWon";
+
     private void Awake()
     {
         _gameSystem = this;
@@ -38,20 +42,26 @@ public class GameSystem : MonoBehaviour
         timer = Time.time + gameTimer;
 
         player.Health.Died += Lose;
-        player.Health.Died += Win;
+        boss.GetHealth().Died += Win;
     }
 
-    private void StartGame()
+    public void StartGame()
     {
-        OnWin?.Invoke();
-
         playing = true;
+
+        timer = Time.time + gameTimer;
     }
     private void Win()
     {
         OnWin?.Invoke();
 
         playing = false;
+
+        foreach (var enemy in FindObjectsOfType<Enemy>())
+        {
+            enemy.DespawnEnemy();
+        }
+        
     }
     private void Lose()
     {
@@ -73,6 +83,11 @@ public class GameSystem : MonoBehaviour
         {
             Application.Quit();
         }
+        
+        if (!playing)
+        {
+            return;
+        }
 
         if (timer <= Time.time)
         {
@@ -88,8 +103,16 @@ public class GameSystem : MonoBehaviour
             timer = Time.time + gameTimer;
         }
 
+        bossTimer += Time.deltaTime;
+
+        if (bossTimer >= timeToBoss && !bossAppeared)
+        {
+            BossAppear();
+        }
+
         _canvasUI.UpdateHealthBar(player.GetHealth(), player.GetMaxHealth());
         _canvasUI.UpdateTimeBar(timer - Time.time, gameTimer);
+        _canvasUI.UpdateDiceBar(bossAppeared ? boss.GetHealth().CurrentPoints / boss.GetHealth().MaxPoints : bossTimer / timeToBoss);
     }
 
     public void PlayShot(AudioClip clip, float volume = 0.5f)

@@ -52,12 +52,17 @@ public class PlayerShooting : MonoBehaviour
         if (_gameSystem != null)
         {
             _gameSystem.OnSwitch -= SwitchShootPoint;
-            _gameSystem.OnSwitcheroo -= Switcheroo;
+            // _gameSystem.OnSwitcheroo -= Switcheroo;
         }
     }
 
     private void Update()
     {
+        if (!_gameSystem.Playing)
+        {
+            return;
+        }
+
         Aim();
 
         if (Input.GetMouseButton(0))

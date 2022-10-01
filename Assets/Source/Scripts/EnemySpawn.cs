@@ -12,6 +12,7 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     private int currentAmount = 0;
+    private int kills = 0;
 
     private float currentWaveTimer = 0;
     private float timer;
@@ -21,7 +22,6 @@ public class EnemySpawn : MonoBehaviour
 
     private Camera currentCamera;
 
-    private bool isStopped;
     private int maxOnField;
 
     private const float timeToSwitch = 10f;
@@ -44,7 +44,7 @@ public class EnemySpawn : MonoBehaviour
     }
     private void Update()
     {
-        if (isStopped)
+        if (!_gameSystem.Playing)
         {
             return;
         }
@@ -102,6 +102,8 @@ public class EnemySpawn : MonoBehaviour
     public void EnemyDied()
     {
         currentAmount--;
+        kills++;
+        _canvasUI.UpdateKills(kills);
     }
     private void SpawnEnemy(GameObject enemy)
     {

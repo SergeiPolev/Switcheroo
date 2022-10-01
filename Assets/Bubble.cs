@@ -28,7 +28,7 @@ public class Bubble : MonoBehaviour, IHittable
     {
         var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
 
-        _gameSystem.PlayShot(shotClip);
+        _gameSystem.PlayShot(shotClip, .4f);
 
         bullet.OnTriggerEnterComponent.OnEnter += Hit;
 
