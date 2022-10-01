@@ -141,7 +141,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  _maxPoints: 10
+  _maxPoints: 25
   _hitEffect: {fileID: 0}
   _hitSound: {fileID: 8300000, guid: b6304a789ff1c3945bf07fb77e626a80, type: 3}
   _deathEffect: {fileID: 0}

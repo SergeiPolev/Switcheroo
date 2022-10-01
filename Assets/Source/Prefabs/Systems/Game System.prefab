@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -222,7 +222,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 054f7d2f0296a924da4c0a71f0f481fc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9e3bf5ef0218fdc408a35d3a4760a9d8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
@@ -359,12 +359,17 @@ MonoBehaviour:
   gameTimer: 10
   despawnEnemy: 30
   switcherooChance: 33
-  timeToBoss: 100
+  timeToBoss: 5
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   soundsSource: {fileID: 269778630}
   musicSource: {fileID: 7430033342175530984}
+  menuMusic: {fileID: 8300000, guid: 9e3bf5ef0218fdc408a35d3a4760a9d8, type: 3}
+  gameMusic: {fileID: 8300000, guid: e0e9fcdf57697a247ba14d2e83cadc0e, type: 3}
+  winMusic: {fileID: 8300000, guid: 50cf9e966ef3acc41b65e5871aeff45c, type: 3}
+  switchSound: {fileID: 8300000, guid: fb23e4ac1d5dedd4ab98fa778905364a, type: 3}
+  switcherooSound: {fileID: 8300000, guid: bbd481b76c22f074994d5dca1a67b806, type: 3}
   player: {fileID: 0}
   boss: {fileID: 0}
   GAME_WON_KEY: GameWon

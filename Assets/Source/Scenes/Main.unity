@@ -259,7 +259,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242219543}
-  m_LocalRotation: {x: 0.3826835, y: -0.00000002248122, z: 0.000000009312028, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826835, y: 0.000000022481217, z: -0.000000009312026, w: 0.92387956}
   m_LocalPosition: {x: 0.17, y: 11.59, z: -16.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -912,7 +912,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984876313}
-  m_LocalRotation: {x: 0.3826835, y: -0.00000002248122, z: 0.000000009312028, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826835, y: 0.000000022481217, z: -0.000000009312026, w: 0.92387956}
   m_LocalPosition: {x: 0.17, y: 11.59, z: -16.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1141,6 +1141,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4395085070342412868, guid: 2a2a5715c1e517e43a2cce092f003c3a, type: 3}
+      propertyPath: shootDamage
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a2a5715c1e517e43a2cce092f003c3a, type: 3}
 --- !u!1001 &7430033342111520376
@@ -1150,18 +1154,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 269778630, guid: c601de3ce575297459ad3d83397b6a5e, type: 3}
-      propertyPath: m_Volume
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7430033342175530984, guid: c601de3ce575297459ad3d83397b6a5e, type: 3}
-      propertyPath: m_Volume
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7430033342175530984, guid: c601de3ce575297459ad3d83397b6a5e, type: 3}
-      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7430033342180401306, guid: c601de3ce575297459ad3d83397b6a5e, type: 3}
       propertyPath: m_Name
       value: Game System
@@ -1174,10 +1166,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1486981181}
-    - target: {fileID: 7430033342180401307, guid: c601de3ce575297459ad3d83397b6a5e, type: 3}
-      propertyPath: timeToBoss
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7430033342180401308, guid: c601de3ce575297459ad3d83397b6a5e, type: 3}
       propertyPath: m_RootOrder
       value: 5

@@ -102,6 +102,11 @@ public class Boss : MonoBehaviour, IHittable
     }
     private void Fire()
     {
+        if (!_gameSystem.Playing)
+        {
+            return;
+        }
+
         var angleStep = 360 / shootAmount;
 
         for (int i = 0; i < shootAmount; i++)

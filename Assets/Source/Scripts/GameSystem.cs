@@ -13,6 +13,12 @@ public class GameSystem : MonoBehaviour
     [SerializeField] private AudioSource soundsSource;
     [SerializeField] private AudioSource musicSource;
 
+    [SerializeField] private AudioClip menuMusic;
+    [SerializeField] private AudioClip gameMusic;
+    [SerializeField] private AudioClip winMusic;
+    [SerializeField] private AudioClip switchSound;
+    [SerializeField] private AudioClip switcherooSound;
+
     public static GameSystem gameSystem;
 
     public Player player;
@@ -45,11 +51,19 @@ public class GameSystem : MonoBehaviour
         boss.GetHealth().Died += Win;
     }
 
+    private void PlayMusic(AudioClip music)
+    {
+        musicSource.clip = music;
+        musicSource.Play();
+    }
+
     public void StartGame()
     {
         playing = true;
 
         timer = Time.time + gameTimer;
+
+        PlayMusic(gameMusic);
     }
     private void Win()
     {
@@ -61,7 +75,8 @@ public class GameSystem : MonoBehaviour
         {
             enemy.DespawnEnemy();
         }
-        
+
+        PlayMusic(winMusic);
     }
     private void Lose()
     {
@@ -69,6 +84,8 @@ public class GameSystem : MonoBehaviour
 
         playing = false;
         player.gameObject.SetActive(false);
+
+        PlayMusic(menuMusic);
     }
     private void BossAppear()
     {
@@ -94,10 +111,13 @@ public class GameSystem : MonoBehaviour
             if (UnityEngine.Random.Range(0, 100) < switcherooChance)
             {
                 OnSwitcheroo?.Invoke();
+
+                PlayShot(switcherooSound, .7f);
             }
             else
             {
                 OnSwitch?.Invoke();
+                PlayShot(switchSound, .7f);
             }
 
             timer = Time.time + gameTimer;
