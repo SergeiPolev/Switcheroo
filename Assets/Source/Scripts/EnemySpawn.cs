@@ -31,7 +31,7 @@ public class EnemySpawn : MonoBehaviour
     {
         _enemySpawn = this;
 
-        currentCamera = Camera.main;
+        currentCamera = FindObjectOfType<RenderCamera>().GetComponent<Camera>();
 
         SetWave(firstWave);
 

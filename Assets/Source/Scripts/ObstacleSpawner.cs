@@ -19,7 +19,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Awake()
     {
-        currentCamera = Camera.main;
+        currentCamera = FindObjectOfType<RenderCamera>().GetComponent<Camera>();
     }
 
     private void Update()

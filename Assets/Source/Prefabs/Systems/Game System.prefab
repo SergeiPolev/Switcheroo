@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTimer: 10
-  despawnEnemy: 30
+  despawnEnemy: 35
   switcherooChance: 33
   timeToBoss: 30
   groundLayer:
