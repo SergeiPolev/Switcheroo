@@ -5,7 +5,8 @@ public enum DropType
 {
     Health,
     Rate,
-    CircleShot
+    CircleShot,
+    Switcheroo
 }
 
 public class Drop : MonoBehaviour

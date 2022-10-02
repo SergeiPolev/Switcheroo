@@ -1,5 +1,7 @@
 using UnityEngine;
 
+using static GameData;
+
 public class DropPickUp : MonoBehaviour
 {
     [SerializeField] private Health playerHealth;
@@ -40,6 +42,11 @@ public class DropPickUp : MonoBehaviour
             case DropType.CircleShot:
 
                 playerShooting.ShootFromEachSide();
+                break;
+
+            case DropType.Switcheroo:
+
+                _gameSystem.Switcheroo();
                 break;
         }
     }

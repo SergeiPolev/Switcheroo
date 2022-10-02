@@ -94,6 +94,13 @@ public class GameSystem : MonoBehaviour
         bossAppeared = true;
     }
 
+    public void Switcheroo()
+    {
+        OnSwitcheroo?.Invoke();
+
+        PlayShot(switcherooSound, .7f);
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -110,9 +117,7 @@ public class GameSystem : MonoBehaviour
         {
             if (UnityEngine.Random.Range(0, 100) < switcherooChance)
             {
-                OnSwitcheroo?.Invoke();
-
-                PlayShot(switcherooSound, .7f);
+                Switcheroo();
             }
             else
             {
