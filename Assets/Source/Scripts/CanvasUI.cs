@@ -118,7 +118,7 @@ public class CanvasUI : MonoBehaviour
     }
     private void UpdateLevel()
     {
-        levelText.text = $"{PlayerPrefs.GetInt(_gameSystem.GAME_WON_KEY, 0) + 1}";
+        levelText.text = $"LVL {PlayerPrefs.GetInt(_gameSystem.GAME_WON_KEY, 0) + 1}";
     }
     public void SwitchAnimation()
     {

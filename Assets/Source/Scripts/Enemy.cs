@@ -83,8 +83,8 @@ public class Enemy : MonoBehaviour, IHittable
             return;
         }
 
-        canvas.UpdateFill(health.CurrentPoints / health.MaxPoints);
         health.GetDamage(damage);
+        canvas.UpdateFill(health.CurrentPoints / health.MaxPoints);
     }
     internal virtual void Die()
     {

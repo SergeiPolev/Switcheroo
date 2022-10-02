@@ -23,8 +23,11 @@ public class PlayerShooting : MonoBehaviour
     private Transform lastShootPoint = null;
 
     private float timer;
+    private float modifierTimer;
 
     private bool IsReverseAim = false;
+
+    private float fireRateModifier = 1f;
 
     private void Awake()
     {
@@ -72,6 +75,22 @@ public class PlayerShooting : MonoBehaviour
                 Shoot();
             }
         }
+
+        if (fireRateModifier != 1f && modifierTimer <= Time.time)
+        {
+            ResetModifier();
+        }
+    }
+
+    private void ResetModifier()
+    {
+        fireRateModifier = 1f;
+    }
+    public void SetModifier(float modifier, float duration)
+    {
+        modifierTimer = Time.time + duration;
+
+        fireRateModifier = modifier;
     }
     private void SwitchShootPoint()
     {
@@ -113,9 +132,22 @@ public class PlayerShooting : MonoBehaviour
 
         bullet.RB.AddForce(currentShootPoint.forward * shootForce);
 
-        timer = Time.time + shootDelay;
+        timer = Time.time + shootDelay * fireRateModifier;
     }
 
+    public void ShootFromEachSide()
+    {
+        _gameSystem.PlayShot(shotClip);
+
+        foreach (var side in shootSides)
+        {
+            var bullet = Instantiate(bulletPrefab, side.transform.position, Quaternion.identity);
+
+            bullet.OnTriggerEnterComponent.OnEnter += Hit;
+
+            bullet.RB.AddForce(side.forward * shootForce);
+        }
+    }
     private void Aim()
     {
         Ray ray = currentCamera.ScreenPointToRay(Input.mousePosition);

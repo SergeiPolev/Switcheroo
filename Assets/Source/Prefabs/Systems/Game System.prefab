@@ -362,7 +362,7 @@ MonoBehaviour:
   gameTimer: 10
   despawnEnemy: 30
   switcherooChance: 33
-  timeToBoss: 55
+  timeToBoss: 30
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

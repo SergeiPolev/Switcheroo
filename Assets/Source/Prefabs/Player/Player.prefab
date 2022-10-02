@@ -447,6 +447,8 @@ GameObject:
   - component: {fileID: 4395085070342412871}
   - component: {fileID: 4395085070342412868}
   - component: {fileID: 4901338623639481666}
+  - component: {fileID: 7821434092000571011}
+  - component: {fileID: 5952147011487453308}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -489,7 +491,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -515,7 +517,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4395085070342412863}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -571,7 +573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootDelay: 0.15
   shootForce: 1000
-  shootDamage: 10
+  shootDamage: 7
   shootSides:
   - {fileID: 4395085069326022376}
   - {fileID: 4395085068898601218}
@@ -633,6 +635,32 @@ MonoBehaviour:
   _hitSound: {fileID: 8300000, guid: b6304a789ff1c3945bf07fb77e626a80, type: 3}
   _deathEffect: {fileID: 0}
   _meshRenderer: {fileID: 3116472475572443656}
+--- !u!114 &7821434092000571011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4395085070342412863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f684e2d497505334491532b36bd89e0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 4901338623639481666}
+  playerShooting: {fileID: 4395085070342412868}
+--- !u!114 &5952147011487453308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4395085070342412863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda8145c73de5c34ea2ffc90709b1514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4219504197038514937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -789,6 +817,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 789869a016d2c784ebe4d592a1e56d73, type: 3}
       propertyPath: m_Name
       value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 789869a016d2c784ebe4d592a1e56d73, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 789869a016d2c784ebe4d592a1e56d73, type: 3}

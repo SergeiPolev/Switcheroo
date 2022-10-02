@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 945065103012573700}
   - component: {fileID: 945065103012573701}
   - component: {fileID: 623170828509101960}
+  - component: {fileID: 6951864600938347757}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -140,7 +141,7 @@ MonoBehaviour:
   speed: 7
   damage: 4
   attackDelay: 1
-  hitDistance: 1.5
+  hitDistance: 2.2
 --- !u!114 &945065103012573700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +216,23 @@ MonoBehaviour:
   _hitSound: {fileID: 8300000, guid: b6304a789ff1c3945bf07fb77e626a80, type: 3}
   _deathEffect: {fileID: 0}
   _meshRenderer: {fileID: 945065103012573696}
+--- !u!114 &6951864600938347757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945065103012573727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1188889f8f7844690cfd0272bcfeb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - {fileID: 4273040074797427182, guid: 9ef381f1862adc7439ca48f23d35c195, type: 3}
+  - {fileID: 6773932199774837345, guid: b1d5a0a240d9d7f479367329713e4f11, type: 3}
+  - {fileID: 2001516185892064040, guid: 1f59c922b20a5c249917d55df01f97fc, type: 3}
+  dropChance: 10
 --- !u!1 &1042013386394814350
 GameObject:
   m_ObjectHideFlags: 0

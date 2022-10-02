@@ -162,5 +162,5 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5656449451199923480, guid: 71028844462a82147a9a94c0c343928f, type: 3}
   shotClip: {fileID: 8300000, guid: 00304673280e36f499a388d34bb42de6, type: 3}
   shootForce: 2000
-  shootDelay: 0.4
+  shootDelay: 0.7
   shootDamage: 10
