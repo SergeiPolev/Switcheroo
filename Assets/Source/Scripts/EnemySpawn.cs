@@ -19,12 +19,13 @@ public class EnemySpawn : MonoBehaviour
 
     private Wave currentWave;
     private Wave lastWave;
+    private List<Wave> availableWaves = new List<Wave>();
 
     private Camera currentCamera;
 
     private int maxOnField;
 
-    private const float timeToSwitch = 10f;
+    private const float timeToSwitch = 5f;
 
     private void Awake()
     {
@@ -35,6 +36,16 @@ public class EnemySpawn : MonoBehaviour
         SetWave(firstWave);
 
         _gameSystem.OnSwitch += SwitchWave;
+
+        int level = PlayerPrefs.GetInt(_gameSystem.GAME_WON_KEY, 0);
+
+        foreach (Wave wave in waves)
+        {
+            if (wave.MinLevel <= level)
+            {
+                availableWaves.Add(wave);
+            }
+        }
 
         maxOnField = maxEnemiesOnField;
     }
@@ -55,7 +66,7 @@ public class EnemySpawn : MonoBehaviour
         {
             currentWaveTimer = 0;
 
-            SetWave(waves[Random.Range(0, waves.Length)]);
+            SetWave(availableWaves[Random.Range(0, availableWaves.Count)]);
         }
 
         if (currentAmount >= maxOnField)
@@ -76,7 +87,7 @@ public class EnemySpawn : MonoBehaviour
     {
         List<Wave> newWaves = new List<Wave>();
 
-        foreach (var wave in waves)
+        foreach (var wave in availableWaves)
         {
             if (wave == lastWave)
             {
@@ -128,7 +139,7 @@ public class EnemySpawn : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _gameSystem.GroundLayer))
         {
-            var enemyGO = Instantiate(enemy, hit.point, Quaternion.identity);
+            Instantiate(enemy, hit.point, Quaternion.identity);
 
             currentAmount++;
         }

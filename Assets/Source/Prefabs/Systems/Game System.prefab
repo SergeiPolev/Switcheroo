@@ -176,6 +176,9 @@ MonoBehaviour:
   delayBetweenSpawn: 0.4
   waves:
   - {fileID: 11400000, guid: 83ee176e584c9f54b9d3e8e32e39e5b9, type: 2}
+  - {fileID: 11400000, guid: a08290adba37102459018303fc2b5758, type: 2}
+  - {fileID: 11400000, guid: 04774573af76f0141a2803e74118e9de, type: 2}
+  - {fileID: 11400000, guid: 0a6212cc669d494438f27740def730d3, type: 2}
   firstWave: {fileID: 11400000, guid: 83ee176e584c9f54b9d3e8e32e39e5b9, type: 2}
   groundLayer:
     serializedVersion: 2
@@ -359,7 +362,7 @@ MonoBehaviour:
   gameTimer: 10
   despawnEnemy: 30
   switcherooChance: 33
-  timeToBoss: 5
+  timeToBoss: 55
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

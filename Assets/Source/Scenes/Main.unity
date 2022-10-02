@@ -1085,6 +1085,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2115911773, guid: 2a2a5715c1e517e43a2cce092f003c3a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4395085070076585487, guid: 2a2a5715c1e517e43a2cce092f003c3a, type: 3}
       propertyPath: shootAmount
       value: 20
@@ -1145,6 +1149,10 @@ PrefabInstance:
       propertyPath: shootDamage
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4901338623639481666, guid: 2a2a5715c1e517e43a2cce092f003c3a, type: 3}
+      propertyPath: _maxPoints
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a2a5715c1e517e43a2cce092f003c3a, type: 3}
 --- !u!1001 &7430033342111520376
@@ -1154,6 +1162,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7430033342083879663, guid: c601de3ce575297459ad3d83397b6a5e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7430033342180401306, guid: c601de3ce575297459ad3d83397b6a5e, type: 3}
       propertyPath: m_Name
       value: Game System

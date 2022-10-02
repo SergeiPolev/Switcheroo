@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 945065103012573701}
   - component: {fileID: 623170828509101960}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: Fast Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,10 +137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d206e5e1dbcc645b398540f2c484ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
-  damage: 4
-  attackDelay: 1
-  hitDistance: 1.5
+  speed: 15
+  damage: 3
+  attackDelay: 0.7
+  hitDistance: 2
 --- !u!114 &945065103012573700
 MonoBehaviour:
   m_ObjectHideFlags: 0

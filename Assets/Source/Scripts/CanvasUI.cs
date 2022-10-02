@@ -15,6 +15,7 @@ public class CanvasUI : MonoBehaviour
     [SerializeField] private CanvasGroup diceRoot;
     [SerializeField] private TextMeshProUGUI switcherooText;
     [SerializeField] private TextMeshProUGUI killsText;
+    [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private Image switcherooSign;
     [SerializeField] private Vector3 rotateVector;
@@ -55,6 +56,8 @@ public class CanvasUI : MonoBehaviour
         switcherooSign.DOFade(0, 0);
 
         startButton.onClick.AddListener(StartGame);
+
+        UpdateLevel();
     }
 
     private void OnLose()
@@ -112,6 +115,10 @@ public class CanvasUI : MonoBehaviour
 
         killsText.text = $"{value}";
         punchScaleKillTween = killsText.transform.DOPunchScale(Vector3.one * 0.2f, 0.2f);
+    }
+    private void UpdateLevel()
+    {
+        levelText.text = $"{PlayerPrefs.GetInt(_gameSystem.GAME_WON_KEY, 0) + 1}";
     }
     public void SwitchAnimation()
     {
