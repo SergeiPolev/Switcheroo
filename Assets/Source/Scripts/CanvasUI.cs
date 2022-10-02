@@ -12,6 +12,7 @@ public class CanvasUI : MonoBehaviour
     [SerializeField] private Image healthBar;
     [SerializeField] private Image timeBar;
     [SerializeField] private Image diceBar;
+    [SerializeField] private Image skillBar;
     [SerializeField] private CanvasGroup diceRoot;
     [SerializeField] private TextMeshProUGUI switcherooText;
     [SerializeField] private TextMeshProUGUI killsText;
@@ -104,6 +105,10 @@ public class CanvasUI : MonoBehaviour
     public void UpdateDiceBar(float value)
     {
         diceBar.fillAmount = value;
+    }
+    public void UpdateSkillBar(float value)
+    {
+        skillBar.fillAmount = value;
     }
     public void UpdateKills(int value)
     {

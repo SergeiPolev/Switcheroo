@@ -572,6 +572,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootDelay: 0.15
+  shootSecondaryDelay: 10
+  shootSecondaryRadius: 5
+  shootSecondaryDamage: 25
   shootForce: 1000
   shootDamage: 7
   shootSides:
@@ -585,6 +588,7 @@ MonoBehaviour:
   shootPoint: {fileID: 1314873744}
   gun: {fileID: 1184078543}
   bulletPrefab: {fileID: 5656449451199923480, guid: 9faabf4b273034e43aa97c94fba7dd6a, type: 3}
+  spreadBulletPrefab: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

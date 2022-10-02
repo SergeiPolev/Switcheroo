@@ -7,6 +7,9 @@ using static GameData;
 public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] private float shootDelay = .5f;
+    [SerializeField] private float shootSecondaryDelay = 10f;
+    [SerializeField] private float shootSecondaryRadius = 5f;
+    [SerializeField] private float shootSecondaryDamage = 5f;
     [SerializeField] private float shootForce = 30f;
     [SerializeField] private float shootDamage = 5f;
     [SerializeField] private Transform[] shootSides;
@@ -14,6 +17,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private Transform shootPoint;
     [SerializeField] private Transform gun;
     [SerializeField] private Bullet bulletPrefab;
+    [SerializeField] private Bullet spreadBulletPrefab;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private AudioClip shotClip;
 
@@ -23,6 +27,7 @@ public class PlayerShooting : MonoBehaviour
     private Transform lastShootPoint = null;
 
     private float timer;
+    private float secondaryTimer;
     private float modifierTimer;
 
     private bool IsReverseAim = false;
@@ -75,13 +80,39 @@ public class PlayerShooting : MonoBehaviour
                 Shoot();
             }
         }
+        
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (Time.time >= secondaryTimer)
+            {
+                SecondarySkill();
+
+                secondaryTimer = Time.time + shootSecondaryDelay;
+            }
+        }
 
         if (fireRateModifier != 1f && modifierTimer <= Time.time)
         {
             ResetModifier();
         }
+
+        _canvasUI.UpdateSkillBar((shootSecondaryDelay - (secondaryTimer - Time.time)) / shootSecondaryDelay);
     }
 
+    private void SecondarySkill()
+    {
+        var enemies = Physics.OverlapSphere(transform.position, shootSecondaryRadius, _gameSystem.EnemyLayer);
+
+        foreach (var enemy in enemies)
+        {
+            var health = enemy.GetComponent<Health>();
+
+            if (health != null)
+            {
+                health.GetDamage(shootSecondaryDamage);
+            }
+        }
+    }
     private void ResetModifier()
     {
         fireRateModifier = 1f;
@@ -141,9 +172,9 @@ public class PlayerShooting : MonoBehaviour
 
         foreach (var side in shootSides)
         {
-            var bullet = Instantiate(bulletPrefab, side.transform.position, Quaternion.identity);
+            var bullet = Instantiate(spreadBulletPrefab, side.transform.position, Quaternion.identity);
 
-            bullet.OnTriggerEnterComponent.OnEnter += Hit;
+            bullet.OnTriggerEnterComponent.OnEnter += HitSpread;
 
             bullet.RB.AddForce(side.forward * shootForce);
         }
@@ -188,5 +219,14 @@ public class PlayerShooting : MonoBehaviour
 
         @object.GetComponent<Bullet>().OnTriggerEnterComponent.OnEnter -= Hit;
         Destroy(@object.gameObject);
+    }
+    private void HitSpread(Transform other, Transform @object)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            var hittable = other.GetComponent<IHittable>();
+
+            hittable.GetHit(shootDamage * 3f);
+        }
     }
 }

@@ -1276,6 +1276,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4395085070342412868, guid: 2a2a5715c1e517e43a2cce092f003c3a, type: 3}
+      propertyPath: spreadBulletPrefab
+      value: 
+      objectReference: {fileID: 5656449451199923480, guid: ba6cc2b221703e74fba6ba38691d26a1, type: 3}
     - target: {fileID: 4901338623639481666, guid: 2a2a5715c1e517e43a2cce092f003c3a, type: 3}
       propertyPath: _maxPoints
       value: 200
@@ -1362,6 +1366,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7430033342083879649, guid: c601de3ce575297459ad3d83397b6a5e, type: 3}
+      propertyPath: maxEnemiesOnField
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7430033342083879663, guid: c601de3ce575297459ad3d83397b6a5e, type: 3}
       propertyPath: m_IsActive
       value: 1

@@ -12,7 +12,12 @@ public class Bubble : MonoBehaviour, IHittable
     [SerializeField] private float shootDamage = 5f;
 
     private float timer;
+    private CharacterCanvas canvas;
 
+    private void Awake()
+    {
+        canvas = GetComponentInChildren<CharacterCanvas>();
+    }
     private void Update()
     {
         if (timer < Time.time)
@@ -23,6 +28,7 @@ public class Bubble : MonoBehaviour, IHittable
     public void GetHit(float damage)
     {
         health.GetDamage(damage);
+        canvas.UpdateFill(health.CurrentPoints / health.MaxPoints);
     }
     private void Shoot()
     {

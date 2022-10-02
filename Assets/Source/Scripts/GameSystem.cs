@@ -10,6 +10,7 @@ public class GameSystem : MonoBehaviour
     [SerializeField] private float switcherooChance = 20f;
     [SerializeField] private float timeToBoss = 100f;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private AudioSource soundsSource;
     [SerializeField] private AudioSource musicSource;
 
@@ -29,6 +30,7 @@ public class GameSystem : MonoBehaviour
 
     public float DespawnDistance => despawnEnemy;
     public LayerMask GroundLayer => groundLayer;
+    public LayerMask EnemyLayer => enemyLayer;
     public bool Playing => playing;
     private bool playing = false;
     private bool bossAppeared = false;
@@ -98,7 +100,7 @@ public class GameSystem : MonoBehaviour
     {
         OnSwitcheroo?.Invoke();
 
-        PlayShot(switcherooSound, .7f);
+        PlayShot(switcherooSound, 1f);
     }
 
     void Update()
@@ -122,7 +124,7 @@ public class GameSystem : MonoBehaviour
             else
             {
                 OnSwitch?.Invoke();
-                PlayShot(switchSound, .7f);
+                PlayShot(switchSound, 1f);
             }
 
             timer = Time.time + gameTimer;

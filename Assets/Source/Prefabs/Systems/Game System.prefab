@@ -172,13 +172,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c50beffef242040ab131b4bd2c5433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnemiesOnField: 30
+  maxEnemiesOnField: 35
   delayBetweenSpawn: 0.4
   waves:
   - {fileID: 11400000, guid: 83ee176e584c9f54b9d3e8e32e39e5b9, type: 2}
   - {fileID: 11400000, guid: a08290adba37102459018303fc2b5758, type: 2}
   - {fileID: 11400000, guid: 04774573af76f0141a2803e74118e9de, type: 2}
   - {fileID: 11400000, guid: 0a6212cc669d494438f27740def730d3, type: 2}
+  - {fileID: 11400000, guid: 191ffbe960e2c924f910a738fd4213a3, type: 2}
   firstWave: {fileID: 11400000, guid: 83ee176e584c9f54b9d3e8e32e39e5b9, type: 2}
   groundLayer:
     serializedVersion: 2
@@ -366,6 +367,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
   soundsSource: {fileID: 269778630}
   musicSource: {fileID: 7430033342175530984}
   menuMusic: {fileID: 8300000, guid: 9e3bf5ef0218fdc408a35d3a4760a9d8, type: 3}
