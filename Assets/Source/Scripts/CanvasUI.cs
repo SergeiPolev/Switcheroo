@@ -195,7 +195,7 @@ public class CanvasUI : MonoBehaviour
     private IEnumerator SwitcherooAnimationCoroutine()
     {
         switcherooText.DOFade(1, .8f);
-        switcherooText.transform.DOScale(1.3f, 1f);
+        switcherooText.transform.DOScale(2.3082f, 1f);
 
         yield return new WaitForSeconds(1f);
 

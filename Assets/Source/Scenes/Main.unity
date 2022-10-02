@@ -1153,13 +1153,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2042248395, guid: fb0a7349bb55f704f96004973c03da46, type: 3}
-      propertyPath: m_Maskable
-      value: 0
+    - target: {fileID: 1977146728, guid: fb0a7349bb55f704f96004973c03da46, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 56
       objectReference: {fileID: 0}
-    - target: {fileID: 2042248395, guid: fb0a7349bb55f704f96004973c03da46, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
+    - target: {fileID: 1977146728, guid: fb0a7349bb55f704f96004973c03da46, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3179358459822323232, guid: fb0a7349bb55f704f96004973c03da46, type: 3}
       propertyPath: m_Pivot.x
@@ -1249,26 +1249,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 3179358459822323238, guid: fb0a7349bb55f704f96004973c03da46, type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179358459822323238, guid: fb0a7349bb55f704f96004973c03da46, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 415.3846
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179358459822323238, guid: fb0a7349bb55f704f96004973c03da46, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 233.07692
-      objectReference: {fileID: 0}
-    - target: {fileID: 4283115433413169997, guid: fb0a7349bb55f704f96004973c03da46, type: 3}
-      propertyPath: m_Name
-      value: Volume Button
-      objectReference: {fileID: 0}
-    - target: {fileID: 5567756681841807037, guid: fb0a7349bb55f704f96004973c03da46, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 3636d0a87c36f4b49a33871167155b2a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb0a7349bb55f704f96004973c03da46, type: 3}
 --- !u!1001 &4395085069140644358
