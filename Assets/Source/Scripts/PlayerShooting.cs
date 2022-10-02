@@ -49,6 +49,7 @@ public class PlayerShooting : MonoBehaviour
 
         _gameSystem.OnSwitch += SwitchShootPoint;
         _gameSystem.OnSwitcheroo += Switcheroo;
+        _gameSystem.OnSecondaryPickUp += SecondaryReady;
     }
     private void InitPoints()
     {
@@ -88,7 +89,7 @@ public class PlayerShooting : MonoBehaviour
         
         if (Input.GetMouseButtonDown(1))
         {
-            if (Time.time >= secondaryTimer)
+            if (IsSecondaryReady)
             {
                 SecondarySkill();
 
@@ -106,18 +107,26 @@ public class PlayerShooting : MonoBehaviour
             var value = (shootSecondaryDelay - (secondaryTimer - Time.time)) / shootSecondaryDelay;
             _canvasUI.UpdateSkillBar(value);
 
-            if (value == 1)
+            if (value >= 1)
             {
-                IsSecondaryReady = true;
-
-                _gameSystem.PlayShot(readyClip, 1f);
+                SecondaryReady();
             }
         }
+    }
+
+    private void SecondaryReady()
+    {
+        IsSecondaryReady = true;
+
+        _gameSystem.PlayShot(readyClip, 2f);
+        _canvasUI.SecondaryReady();
+        _canvasUI.UpdateSkillBar(1f);
     }
 
     private void SecondarySkill()
     {
         var enemies = Physics.OverlapSphere(transform.position, shootSecondaryRadius, _gameSystem.EnemyLayer);
+        var damage = shootSecondaryDamage * (1 + _gameSystem.PassedLevels / 10);
 
         foreach (var enemy in enemies)
         {
@@ -125,11 +134,12 @@ public class PlayerShooting : MonoBehaviour
 
             if (health != null)
             {
-                health.GetHit(shootSecondaryDamage);
+                health.GetHit(damage);
             }
         }
 
         _gameSystem.PlayShot(secondaryClip, 2f);
+        _canvasUI.SecondaryUsed();
         secondaryVfx.Play();
         IsSecondaryReady = false;
     }

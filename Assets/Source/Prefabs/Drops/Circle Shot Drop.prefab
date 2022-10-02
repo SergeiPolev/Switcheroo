@@ -762,6 +762,10 @@ PrefabInstance:
       propertyPath: dropType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6773932199774837358, guid: b1d5a0a240d9d7f479367329713e4f11, type: 3}
+      propertyPath: minLevel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6773932200651128748, guid: b1d5a0a240d9d7f479367329713e4f11, type: 3}
       propertyPath: m_IsActive
       value: 0

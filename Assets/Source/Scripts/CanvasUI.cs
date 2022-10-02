@@ -13,6 +13,7 @@ public class CanvasUI : MonoBehaviour
     [SerializeField] private Image timeBar;
     [SerializeField] private Image diceBar;
     [SerializeField] private Image skillBar;
+    [SerializeField] private Image skillBarCircle;
     [SerializeField] private CanvasGroup diceRoot;
     [SerializeField] private TextMeshProUGUI switcherooText;
     [SerializeField] private TextMeshProUGUI killsText;
@@ -34,16 +35,26 @@ public class CanvasUI : MonoBehaviour
     [SerializeField] private CanvasGroup startPanel;
     [SerializeField] private Button startButton;
 
+    [Header("Volume Master")]
+    [SerializeField] private Image volumeIcon;
+    [SerializeField] private Button volumeButton;
+    [SerializeField] private Sprite volumeOn;
+    [SerializeField] private Sprite volumeOff;
+
     [Header("Victory")]
     [SerializeField] private CanvasGroup victoryPanel;
     [SerializeField] private Button startAgainButton;
 
+    private Color skillBarColor;
 
     private Tween punchScaleKillTween;
+    private Tween secondaryTween;
 
     private void Awake()
     {
         _canvasUI = this;
+
+        skillBarColor = skillBar.color;
 
         _gameSystem.OnSwitcheroo += SwitcherooAnimation;
         _gameSystem.OnSwitch += SwitchAnimation;
@@ -54,6 +65,7 @@ public class CanvasUI : MonoBehaviour
 
         restartButton.onClick.AddListener(Restart);
         startAgainButton.onClick.AddListener(Restart);
+        volumeButton.onClick.AddListener(DisableVolume);
 
         switcherooSign.transform.DORotate(rotateVector, 1f).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
         switcherooSign.DOFade(0, 0);
@@ -61,6 +73,23 @@ public class CanvasUI : MonoBehaviour
         startButton.onClick.AddListener(StartGame);
 
         UpdateLevel();
+    }
+    private void Start()
+    {
+        UpdateIconVolume(_gameSystem.Volume == 0 ? true : false);
+    }
+    private void UpdateIconVolume(bool enable)
+    {
+        volumeIcon.sprite = enable ? volumeOn : volumeOff;
+    }
+
+    private void DisableVolume()
+    {
+        bool newValue = _gameSystem.Volume == 0 ? false : true;
+
+        UpdateIconVolume(newValue);
+
+        _gameSystem.Mute(newValue);
     }
 
     private void OnLose()
@@ -97,6 +126,8 @@ public class CanvasUI : MonoBehaviour
         startPanel.gameObject.SetActive(false);
 
         diceRoot.DOFade(1, .5f);
+
+        volumeButton.gameObject.SetActive(false);
     }
 
     public void UpdateTimeBar(float current, float max)
@@ -131,6 +162,21 @@ public class CanvasUI : MonoBehaviour
     private void UpdateLevel()
     {
         levelText.text = $"LVL {PlayerPrefs.GetInt(_gameSystem.GAME_WON_KEY, 0) + 1}";
+    }
+    public void SecondaryReady()
+    {
+        skillBar.DOColor(Color.green, .5f);
+        secondaryTween = skillBar.transform.DOScale(Vector3.one * 1.1f, .5f).SetLoops(-1, LoopType.Yoyo);
+        skillBarCircle.DOFade(1, .5f);
+        skillBarCircle.transform.DOPunchScale(Vector3.one * 0.2f, 0.2f);
+    }
+    public void SecondaryUsed()
+    {
+        secondaryTween.Kill();
+        secondaryTween.Goto(0, true);
+        secondaryTween = null;
+
+        skillBarCircle.DOFade(0, .5f);
     }
     public void SwitchAnimation()
     {

@@ -39,7 +39,7 @@ public class DropPickUp : MonoBehaviour
 
             case DropType.Rate:
 
-                playerShooting.SetModifier(0.7f, 3f);
+                playerShooting.SetModifier(0.4f, 3f);
                 break;
 
             case DropType.CircleShot:
@@ -50,6 +50,11 @@ public class DropPickUp : MonoBehaviour
             case DropType.Switcheroo:
 
                 _gameSystem.Switcheroo();
+                break;
+
+            case DropType.SecondarySkill:
+
+                _gameSystem.SecondaryPickUp();
                 break;
         }
     }

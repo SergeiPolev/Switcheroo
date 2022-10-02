@@ -41,7 +41,7 @@ AudioSource:
   m_GameObject: {fileID: 269778628}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3b4589fb7bfd57340b48a08d308e2bcb, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.3
@@ -225,7 +225,7 @@ AudioSource:
   m_GameObject: {fileID: 7430033342175530998}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3b4589fb7bfd57340b48a08d308e2bcb, type: 2}
   m_audioClip: {fileID: 8300000, guid: 9e3bf5ef0218fdc408a35d3a4760a9d8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
@@ -377,9 +377,17 @@ MonoBehaviour:
   winMusic: {fileID: 8300000, guid: 50cf9e966ef3acc41b65e5871aeff45c, type: 3}
   switchSound: {fileID: 8300000, guid: fb23e4ac1d5dedd4ab98fa778905364a, type: 3}
   switcherooSound: {fileID: 8300000, guid: bbd481b76c22f074994d5dca1a67b806, type: 3}
+  masterGroup: {fileID: 24300002, guid: 3b4589fb7bfd57340b48a08d308e2bcb, type: 2}
+  allDrops:
+  - {fileID: 4273040074797427169, guid: 9ef381f1862adc7439ca48f23d35c195, type: 3}
+  - {fileID: 6773932199774837358, guid: b1d5a0a240d9d7f479367329713e4f11, type: 3}
+  - {fileID: 2001516185892064039, guid: 1f59c922b20a5c249917d55df01f97fc, type: 3}
+  - {fileID: 8978090137441101138, guid: 893a4fc5bc55e48499bb600dd43d1672, type: 3}
   player: {fileID: 0}
   boss: {fileID: 0}
+  availableDrops: []
   GAME_WON_KEY: GameWon
+  VOLUME: Volume
 --- !u!1 &9217475105189084294
 GameObject:
   m_ObjectHideFlags: 0

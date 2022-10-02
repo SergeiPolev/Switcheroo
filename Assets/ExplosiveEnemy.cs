@@ -27,7 +27,7 @@ public class ExplosiveEnemy : Enemy
 
         Destroy(gameObject);
 
-        _gameSystem.PlayShot(explosionClip, 2f);
+        _gameSystem.PlayShot(explosionClip, 1.5f);
 
         var vfx = Instantiate(explosionVFX, transform.position, Quaternion.identity);
         Destroy(vfx, 1f);

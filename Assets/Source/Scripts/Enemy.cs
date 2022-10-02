@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour, IHittable
         navMesh.speed = speed;
 
         health.Died += Die;
+
+        health.SetMaxPoints(health.MaxPoints * (1 + _gameSystem.PassedLevels / 10), true);
     }
     public virtual void Update()
     {
