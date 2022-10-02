@@ -27,4 +27,9 @@ public class ExplosiveEnemy : Enemy
         var vfx = Instantiate(explosionVFX, transform.position, Quaternion.identity);
         Destroy(vfx, 1f);
     }
+    internal override void Die()
+    {
+        DespawnEnemy();
+        Attack();
+    }
 }

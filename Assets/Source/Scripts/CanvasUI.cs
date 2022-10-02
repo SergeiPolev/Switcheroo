@@ -24,6 +24,7 @@ public class CanvasUI : MonoBehaviour
     [Header("Colors")]
     [SerializeField] private Color switchColor;
     [SerializeField] private Color switcherooColor;
+    [SerializeField] private Color bossColor;
 
     [Header("Death")]
     [SerializeField] private CanvasGroup deathPanel;
@@ -49,6 +50,7 @@ public class CanvasUI : MonoBehaviour
 
         _gameSystem.OnLose += OnLose;
         _gameSystem.OnWin += OnWin;
+        _gameSystem.OnBoss += OnBoss;
 
         restartButton.onClick.AddListener(Restart);
         startAgainButton.onClick.AddListener(Restart);
@@ -77,6 +79,11 @@ public class CanvasUI : MonoBehaviour
         gamesWon++;
 
         PlayerPrefs.SetInt(_gameSystem.GAME_WON_KEY, gamesWon);
+    }
+    private void OnBoss()
+    {
+        diceBar.DOColor(bossColor, 1f);
+        diceBar.transform.DOPunchScale(Vector3.one * .5f, .3f);
     }
 
     private void Restart()

@@ -20,6 +20,8 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private Bullet spreadBulletPrefab;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private AudioClip shotClip;
+    [SerializeField] private GameObject muzzleFlash;
+    [SerializeField] private ParticleSystem secondaryVfx;
 
     private Camera currentCamera;
 
@@ -112,6 +114,8 @@ public class PlayerShooting : MonoBehaviour
                 health.GetHit(shootSecondaryDamage);
             }
         }
+
+        secondaryVfx.Play();
     }
     private void ResetModifier()
     {
@@ -156,6 +160,9 @@ public class PlayerShooting : MonoBehaviour
     private void Shoot()
     {
         var bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
+        var vfx = Instantiate(muzzleFlash, shootPoint.position, currentShootPoint.rotation);
+
+        Destroy(vfx, .5f);
 
         _gameSystem.PlayShot(shotClip);
 

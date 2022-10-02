@@ -40,6 +40,7 @@ public class GameSystem : MonoBehaviour
 
     public event Action OnLose;
     public event Action OnWin;
+    public event Action OnBoss;
 
     public string GAME_WON_KEY = "GameWon";
 
@@ -94,6 +95,7 @@ public class GameSystem : MonoBehaviour
         boss.gameObject.SetActive(true);
         boss.transform.SetParent(null);
         bossAppeared = true;
+        OnBoss?.Invoke();
     }
 
     public void Switcheroo()

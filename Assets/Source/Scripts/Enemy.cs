@@ -57,7 +57,6 @@ public class Enemy : MonoBehaviour, IHittable
 
         if (Time.frameCount % refreshNavMeshFrames == 0)
         {
-
             navMesh.SetDestination(playerPos);
 
             if (Vector3.Distance(transform.position, playerPos) > _gameSystem.DespawnDistance)

@@ -145,7 +145,7 @@ MonoBehaviour:
   _maxPoints: 25
   _hitEffect: {fileID: 0}
   _hitSound: {fileID: 8300000, guid: b6304a789ff1c3945bf07fb77e626a80, type: 3}
-  _deathEffect: {fileID: 0}
+  _deathEffect: {fileID: 6792174839549122372, guid: f4839a06eb96085408ee7af6195168c8, type: 3}
   _meshRenderer: {fileID: 8664341692175794913}
 --- !u!114 &8069458208746526396
 MonoBehaviour:
