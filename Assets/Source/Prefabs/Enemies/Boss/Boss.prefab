@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VFX: {fileID: 8876974247796114794}
+  hitClip: {fileID: 8300000, guid: 16bb04cbd192d434c80531ca8f5ff099, type: 3}
 --- !u!1 &464093017037964538
 GameObject:
   m_ObjectHideFlags: 0

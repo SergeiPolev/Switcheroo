@@ -20,6 +20,8 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private Bullet spreadBulletPrefab;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private AudioClip shotClip;
+    [SerializeField] private AudioClip secondaryClip;
+    [SerializeField] private AudioClip readyClip;
     [SerializeField] private GameObject muzzleFlash;
     [SerializeField] private ParticleSystem secondaryVfx;
 
@@ -33,6 +35,7 @@ public class PlayerShooting : MonoBehaviour
     private float modifierTimer;
 
     private bool IsReverseAim = false;
+    private bool IsSecondaryReady = true;
 
     private float fireRateModifier = 1f;
 
@@ -98,7 +101,18 @@ public class PlayerShooting : MonoBehaviour
             ResetModifier();
         }
 
-        _canvasUI.UpdateSkillBar((shootSecondaryDelay - (secondaryTimer - Time.time)) / shootSecondaryDelay);
+        if (!IsSecondaryReady)
+        {
+            var value = (shootSecondaryDelay - (secondaryTimer - Time.time)) / shootSecondaryDelay;
+            _canvasUI.UpdateSkillBar(value);
+
+            if (value == 1)
+            {
+                IsSecondaryReady = true;
+
+                _gameSystem.PlayShot(readyClip, 1f);
+            }
+        }
     }
 
     private void SecondarySkill()
@@ -115,7 +129,9 @@ public class PlayerShooting : MonoBehaviour
             }
         }
 
+        _gameSystem.PlayShot(secondaryClip, 2f);
         secondaryVfx.Play();
+        IsSecondaryReady = false;
     }
     private void ResetModifier()
     {

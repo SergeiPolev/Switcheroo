@@ -394,10 +394,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3271428486392445207, guid: 893a4fc5bc55e48499bb600dd43d1672, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 45
-      objectReference: {fileID: 0}
     - target: {fileID: 8978090137441101137, guid: 893a4fc5bc55e48499bb600dd43d1672, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -1187,22 +1183,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3179358459822323233, guid: fb0a7349bb55f704f96004973c03da46, type: 3}
-      propertyPath: bossColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179358459822323233, guid: fb0a7349bb55f704f96004973c03da46, type: 3}
-      propertyPath: bossColor.b
-      value: 0.36467838
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179358459822323233, guid: fb0a7349bb55f704f96004973c03da46, type: 3}
-      propertyPath: bossColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179358459822323233, guid: fb0a7349bb55f704f96004973c03da46, type: 3}
-      propertyPath: bossColor.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3179358459822323236, guid: fb0a7349bb55f704f96004973c03da46, type: 3}
       propertyPath: m_Name
       value: UI
@@ -1321,18 +1301,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6773932200651128748, guid: b1d5a0a240d9d7f479367329713e4f11, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6773932201055646582, guid: b1d5a0a240d9d7f479367329713e4f11, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6773932201058019276, guid: b1d5a0a240d9d7f479367329713e4f11, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1d5a0a240d9d7f479367329713e4f11, type: 3}
 --- !u!1001 &7430033342111520376
@@ -1342,14 +1310,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7430033342083879649, guid: c601de3ce575297459ad3d83397b6a5e, type: 3}
-      propertyPath: maxEnemiesOnField
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7430033342083879663, guid: c601de3ce575297459ad3d83397b6a5e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7430033342180401306, guid: c601de3ce575297459ad3d83397b6a5e, type: 3}
       propertyPath: m_Name
       value: Game System
@@ -1362,10 +1322,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1486981181}
-    - target: {fileID: 7430033342180401307, guid: c601de3ce575297459ad3d83397b6a5e, type: 3}
-      propertyPath: timeToBoss
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7430033342180401308, guid: c601de3ce575297459ad3d83397b6a5e, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1419,14 +1375,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2015412243997570588, guid: 3c0381b8a6658bc4e8453e5f3e3edd5d, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: 416f2f25dac9ac843afd6c9a7a4c6ae9, type: 2}
-    - target: {fileID: 2015412243997570588, guid: 3c0381b8a6658bc4e8453e5f3e3edd5d, type: 3}
-      propertyPath: m_LayerMask.m_Bits
-      value: 3839
-      objectReference: {fileID: 0}
     - target: {fileID: 9047798637779047288, guid: 3c0381b8a6658bc4e8453e5f3e3edd5d, type: 3}
       propertyPath: m_RootOrder
       value: 7

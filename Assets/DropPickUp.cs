@@ -6,6 +6,7 @@ public class DropPickUp : MonoBehaviour
 {
     [SerializeField] private Health playerHealth;
     [SerializeField] private PlayerShooting playerShooting;
+    [SerializeField] private AudioClip powerUpClip;
 
     private void Awake()
     {
@@ -20,6 +21,8 @@ public class DropPickUp : MonoBehaviour
             if (pickUp != null)
             {
                 ChoosePickUp(pickUp.DropType);
+
+                _gameSystem.PlayShot(powerUpClip, 1f);
             }
 
             Destroy(other.gameObject);

@@ -597,6 +597,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   shotClip: {fileID: 8300000, guid: 00304673280e36f499a388d34bb42de6, type: 3}
+  secondaryClip: {fileID: 8300000, guid: e1e0a5753ff76ce4191a9249cb4d399a, type: 3}
+  readyClip: {fileID: 8300000, guid: a275b90a523ef71479b46c9e8d8b3394, type: 3}
   muzzleFlash: {fileID: 8454488149358499999, guid: c7df971a5d8f9aa4caf530204b747156, type: 3}
   secondaryVfx: {fileID: 7242429659697354071}
 --- !u!114 &4901338623639481666
@@ -659,6 +661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 4901338623639481666}
   playerShooting: {fileID: 4395085070342412868}
+  powerUpClip: {fileID: 8300000, guid: 883418c356f31124db2f7be86e00af9c, type: 3}
 --- !u!114 &5952147011487453308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,6 +825,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Congrats
       objectReference: {fileID: 0}
+    - target: {fileID: 6096324106096936384, guid: d24901a3685224f46a96ccb210db2ae8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6096324106096936389, guid: d24901a3685224f46a96ccb210db2ae8, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -836,7 +843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6096324106096936389, guid: d24901a3685224f46a96ccb210db2ae8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6096324106096936389, guid: d24901a3685224f46a96ccb210db2ae8, type: 3}
       propertyPath: m_LocalRotation.w

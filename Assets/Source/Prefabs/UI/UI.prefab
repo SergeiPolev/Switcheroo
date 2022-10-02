@@ -1882,7 +1882,7 @@ MonoBehaviour:
   rotateVector: {x: 180, y: 0, z: 0}
   switchColor: {r: 0.98039216, g: 1, b: 0, a: 1}
   switcherooColor: {r: 1, g: 0, b: 0.9647059, a: 1}
-  bossColor: {r: 0, g: 0, b: 0, a: 0}
+  bossColor: {r: 1, g: 0, b: 0.36467838, a: 1}
   deathPanel: {fileID: 1571392634}
   restartButton: {fileID: 710821626}
   startPanel: {fileID: 6237652946612413865}

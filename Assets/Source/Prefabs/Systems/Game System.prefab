@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c50beffef242040ab131b4bd2c5433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnemiesOnField: 35
+  maxEnemiesOnField: 25
   delayBetweenSpawn: 0.4
   waves:
   - {fileID: 11400000, guid: 83ee176e584c9f54b9d3e8e32e39e5b9, type: 2}

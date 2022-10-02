@@ -1,9 +1,12 @@
 using UnityEngine;
 
+using static GameData;
+
 public class ExplosiveEnemy : Enemy
 {
     [SerializeField] private float radius = 4f;
     [SerializeField] private GameObject explosionVFX;
+    [SerializeField] private AudioClip explosionClip;
 
     internal override void Attack()
     {
@@ -23,6 +26,8 @@ public class ExplosiveEnemy : Enemy
         }
 
         Destroy(gameObject);
+
+        _gameSystem.PlayShot(explosionClip, 2f);
 
         var vfx = Instantiate(explosionVFX, transform.position, Quaternion.identity);
         Destroy(vfx, 1f);
