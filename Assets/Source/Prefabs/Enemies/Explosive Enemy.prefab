@@ -325,6 +325,7 @@ MonoBehaviour:
   attackDelay: 1
   hitDistance: 2.2
   radius: 4
+  explosionVFX: {fileID: 3419502645043552817, guid: d64d68703f7a98f499efa1d1e5b65518, type: 3}
 --- !u!1 &5789237353670993524
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,8 @@ using UnityEngine;
 public class ExplosiveEnemy : Enemy
 {
     [SerializeField] private float radius = 4f;
+    [SerializeField] private GameObject explosionVFX;
+
     internal override void Attack()
     {
         var colliders = Physics.OverlapSphere(transform.position, 4f);
@@ -11,15 +13,18 @@ public class ExplosiveEnemy : Enemy
         {
             if (item.CompareTag("Player") || item.CompareTag("Enemy"))
             {
-                var health = item.GetComponent<Health>();
+                var health = item.GetComponent<IHittable>();
 
                 if (health != null)
                 {
-                    health.GetDamage(damage);
+                    health.GetHit(damage);
                 }
             }
         }
 
         Destroy(gameObject);
+
+        var vfx = Instantiate(explosionVFX, transform.position, Quaternion.identity);
+        Destroy(vfx, 1f);
     }
 }

@@ -105,11 +105,11 @@ public class PlayerShooting : MonoBehaviour
 
         foreach (var enemy in enemies)
         {
-            var health = enemy.GetComponent<Health>();
+            var health = enemy.GetComponent<IHittable>();
 
             if (health != null)
             {
-                health.GetDamage(shootSecondaryDamage);
+                health.GetHit(shootSecondaryDamage);
             }
         }
     }
